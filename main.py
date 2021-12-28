@@ -30,13 +30,6 @@ async def test(ctx):
 
 """Bronze Bravery Command"""
 
-
-@vars.client.command()
-async def t(ctx):
-    await funcs.get_everything()
-    fill_create_json()
-
-
 @vars.client.command(name="bb")
 async def cmd_bronze_bravery(ctx, pm=""):
     await bronze_bravery_command(ctx, pm)
