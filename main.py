@@ -2,11 +2,10 @@ import json
 
 import discord
 
+import rune_database
 from commands import help, summoner_rank
 from commands.bronze_bravery import bronze_bravery_command
 import vars
-from create_json import fill_create_json
-import funcs
 import constants as const
 
 vars.empty_vars()
@@ -23,6 +22,7 @@ async def on_ready():
     print("Ready")
 
 
+
 @vars.client.command()
 async def test(ctx):
     await ctx.send('Works')
@@ -34,6 +34,7 @@ async def test(ctx):
 async def cmd_bronze_bravery(ctx, pm=""):
     await bronze_bravery_command(ctx, pm)
     await ctx.message.delete()
+    await rune_database.get_runes()
 
 
 """Summoner Rank Command"""
@@ -46,7 +47,6 @@ async def cmd_summoner_rank(ctx, arg_sum="", arg_reg="euw1"):
 
 @vars.client.command(name="help")
 async def cmd_help(ctx, cmd=""):
-    # await help.help_command(ctx)
     await help.help_command(ctx, cmd)
 
 

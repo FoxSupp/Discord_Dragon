@@ -69,4 +69,4 @@ async def bronze_bravery_command(ctx, pm):
 
 
     await channel.send(file=discord.File("build.json"), embed=embedded)
-    vars.empty_vars()
+    #vars.empty_vars()
