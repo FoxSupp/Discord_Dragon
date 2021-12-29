@@ -34,9 +34,7 @@ async def help_command(ctx, cmd):
                                 "**Tips**\n"
                                 "You can import the provided Json in your League Client at\n"
                                 "***Collection*** --> ***Items*** --> ***Import Items Sets***\n"
-                                "The just choose your build.json and Click Save\n"
-                                "***Hint***\n"
-                                "*If the Save Button is Gray try dragging your Last Item a bit to the Right!*"
+                                "Then just choose your build.json and Click Open\n"
                           )
 
     await ctx.send(embed=emb_msg)
