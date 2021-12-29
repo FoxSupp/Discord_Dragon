@@ -19,7 +19,7 @@ def pretty_print(dic):
 
 @vars.client.event
 async def on_ready():
-    await vars.client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=".help"))
+    await vars.client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=".help "))
     print("Ready")
 
 
