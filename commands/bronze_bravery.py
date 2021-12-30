@@ -4,6 +4,7 @@ from random import randrange
 import discord
 
 import funcs
+import rune_database
 import vars
 from create_json import fill_create_json
 
@@ -69,4 +70,6 @@ async def bronze_bravery_command(ctx, pm):
 
 
     await channel.send(file=discord.File("build.json"), embed=embedded)
-    #vars.empty_vars()
+    await rune_database.get_runes(ctx.author.id)
+
+    vars.empty_vars()

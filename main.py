@@ -1,14 +1,16 @@
 import json
+from time import sleep
+import asyncio
 
 import discord
 
 import rune_database
-from commands import help, summoner_rank
+from commands import help, summoner_rank, link, deletebb
 from commands.bronze_bravery import bronze_bravery_command
 import vars
 import constants as const
 
-vars.empty_vars()
+
 vars.init()
 
 
@@ -18,6 +20,7 @@ def pretty_print(dic):
 
 @vars.client.event
 async def on_ready():
+    vars.empty_vars()
     await vars.client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=".help "))
     print("Ready")
 
@@ -32,9 +35,16 @@ async def test(ctx):
 
 @vars.client.command(name="bb")
 async def cmd_bronze_bravery(ctx, pm=""):
-    await bronze_bravery_command(ctx, pm)
-    await ctx.message.delete()
-    await rune_database.get_runes()
+    if vars.rand_champ == "":
+        await bronze_bravery_command(ctx, pm)
+        await ctx.message.delete()
+        #Discord ID mit in die DB schreiben
+    else:
+        await ctx.send("Wait For Other Command to finish!")
+
+@vars.client.command(name="delbb")
+async def cmd_delete_bb(ctx):
+    await deletebb.delete_all_runes_from_db(ctx)
 
 
 """Summoner Rank Command"""
@@ -48,6 +58,16 @@ async def cmd_summoner_rank(ctx, arg_sum="", arg_reg="euw1"):
 @vars.client.command(name="help")
 async def cmd_help(ctx, cmd=""):
     await help.help_command(ctx, cmd)
+
+@vars.client.command(name="link")
+async def cmd_link(ctx, league_id=""):
+    if league_id != "":
+        await link.link_command(ctx, league_id)
+        await ctx.message.delete()
+        await ctx.author.send("Your League ID was linked to your Discord ID, you can now use the Desktop App to import your Runes")
+    else:
+        await ctx.message.delete()
+        await ctx.send("Please provide your League ID you get from the Desktop App!")
 
 
 vars.client.run(const.bot_id)

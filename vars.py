@@ -6,6 +6,8 @@ import constants as const
 
 
 def empty_vars():
+    global prim_style
+    global second_style
     global watcher
     global region
     # CHAMPIONS
@@ -27,7 +29,11 @@ def empty_vars():
     global second_tree
     global statChips
     global splash_link
+    global rune_ids
 
+    prim_style = ""
+    second_style = ""
+    rune_ids = []
     watcher = LolWatcher(const.api_key)
     region = 'euw1'
     # CHAMPIONS
@@ -54,5 +60,5 @@ def empty_vars():
 
 def init():
     global client
-    client = commands.Bot(command_prefix='.')
+    client = commands.Bot(command_prefix='#')
     client.remove_command("help")
