@@ -5,7 +5,7 @@ import asyncio
 import discord
 
 import rune_database
-from commands import help, summoner_rank, link, deletebb
+from commands import help, summoner_rank, link, deletebb, unlink
 from commands.bronze_bravery import bronze_bravery_command
 import vars
 import constants as const
@@ -69,5 +69,9 @@ async def cmd_link(ctx, league_id=""):
         await ctx.message.delete()
         await ctx.send("Please provide your League ID you get from the Desktop App!")
 
+@vars.client.command(name="unlink")
+async def cmd_unlink(ctx):
+    await unlink.unlink_command(ctx)
+    await ctx.send("Your Discord Account has successfully been unlinked.")
 
 vars.client.run(const.bot_id)
