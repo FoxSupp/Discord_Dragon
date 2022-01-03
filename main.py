@@ -34,9 +34,9 @@ async def test(ctx):
 """Bronze Bravery Command"""
 
 @vars.client.command(name="bb")
-async def cmd_bronze_bravery(ctx, pm=""):
+async def cmd_bronze_bravery(ctx, map=""):
     if vars.rand_champ == "":
-        await bronze_bravery_command(ctx, pm)
+        await bronze_bravery_command(ctx, map)
         await ctx.message.delete()
         #Discord ID mit in die DB schreiben
     else:

@@ -9,7 +9,7 @@ import vars
 from create_json import fill_create_json
 
 
-async def bronze_bravery_command(ctx, pm):
+async def bronze_bravery_command(ctx, map):
     colors = {"green": 0x00ff00, "red": 0xff0000, "blue": 0x0000ff}
     await funcs.get_everything()
 
@@ -63,9 +63,9 @@ async def bronze_bravery_command(ctx, pm):
 
     channel = ctx.channel
     await fill_create_json()
-    if pm=="y":
 
-        await ctx.author.send(file=discord.File("build.json"), embed=embedded)
+
+    await ctx.author.send(file=discord.File("build.json"), embed=embedded)
 
 
 

@@ -4,6 +4,8 @@ from urllib.request import urlopen
 
 import vars
 
+def pretty_print(dic):
+    print(json.dumps(dic, indent=4, ))
 
 async def get_everything():
     """Get all Champions and put them in a List
@@ -39,6 +41,8 @@ async def get_everything():
 
     item_version = versions['n']['item']
     current_item_list = vars.watcher.data_dragon.items(item_version)
+
+    pretty_print(current_item_list)
 
     """Boots"""
     for key in current_item_list['data']:
