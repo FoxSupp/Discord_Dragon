@@ -60,5 +60,5 @@ def empty_vars():
 
 def init():
     global client
-    client = commands.Bot(command_prefix='.')
+    client = commands.Bot(command_prefix='#')
     client.remove_command("help")

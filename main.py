@@ -38,6 +38,7 @@ async def cmd_bronze_bravery(ctx, map=""):
     if vars.rand_champ == "":
         await bronze_bravery_command(ctx, map)
         await ctx.message.delete()
+
         #Discord ID mit in die DB schreiben
     else:
         await ctx.send("Wait For Other Command to finish!")

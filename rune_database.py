@@ -65,7 +65,6 @@ async def get_runes(discord_id):
     sql = "SELECT * FROM league_discord_map where discord_id = '" + str(discord_id) + "'"
     mycursor.execute(sql)
     result_map = mycursor.fetchall()
-    pretty_print(result_map)
     if len(result_map) > 0:
 
         sql = "SELECT * FROM rune_id where league_id = '" + str(result_map[0][1]) + "'"

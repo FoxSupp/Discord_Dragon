@@ -8,10 +8,12 @@ import rune_database
 import vars
 from create_json import fill_create_json
 
-
+def pretty_print(dic):
+    print(json.dumps(dic, indent=4, ))
 async def bronze_bravery_command(ctx, map):
     colors = {"green": 0x00ff00, "red": 0xff0000, "blue": 0x0000ff}
-    await funcs.get_everything()
+    await funcs.get_everything(map)
+    pretty_print(vars.non_mythic_item_list)
 
     runes = "\n- ".join(vars.prim_tree) + "\n- " + "\n- ".join(vars.second_tree) + "\n\n- " + "\n- ".join(
         vars.statChips)

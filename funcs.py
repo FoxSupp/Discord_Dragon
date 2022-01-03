@@ -7,7 +7,13 @@ import vars
 def pretty_print(dic):
     print(json.dumps(dic, indent=4, ))
 
-async def get_everything():
+async def get_everything(map="11"):
+
+
+    if map.lower() == "aram":
+        map = "12"
+    else:
+        map = "11"
     """Get all Champions and put them in a List
         then take a Random Champion out of there"""
 
@@ -57,7 +63,7 @@ async def get_everything():
                 'from' in current_item_list['data'][key] and \
                 len(current_item_list['data'][key]['description'].split('Mythic')) == 1 and \
                 "Boots" not in current_item_list['data'][key]['tags'] and \
-                current_item_list['data'][key]['maps']['11'] == True and \
+                current_item_list['data'][key]['maps'][map] == True and \
                 "Consumable" not in current_item_list['data'][key]['tags']:
             vars.non_mythic_item_list.append(current_item_list['data'][key]['name'])
 
